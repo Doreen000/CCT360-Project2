@@ -27,28 +27,28 @@ function getWeatherDescription(code) {
 function getBackgroundImage(code) {
     if (code === 0) {
         // Sunny
-        return "url('/CCT360-Project2/sunny.jpg')";
+        return "url('sunny.jpg')";
     } else if (code >= 1 && code <= 3) {
         // Cloudy
-        return "url('/CCT360-Project2/cloudy.jpg')";
+        return "url('cloudy.jpg')";
     } else if (code >= 45 && code <= 48) {
         // Foggy
-        return "url('/CCT360-Project2/foggy.jpg')";
+        return "url('foggy.jpg')";
     } else if (code >= 51 && code <= 55) {
         // Drizzle
-        return "url('/CCT360-Project2/drizzle.jpg')";
+        return "url('drizzle.jpg')";
     } else if (code >= 61 && code <= 65) {
         // Rainy
-        return "url('/CCT360-Project2/Rainy.jpg')";
+        return "url('Rainy.jpg')";
     } else if (code >= 71 && code <= 75) {
         // Snowy
-        return "url('/CCT360-Project2/snowy.jpg')";
+        return "url('snowy.jpg')";
     } else if (code >= 95 && code <= 99) {
         // Thunderstorm
-        return "url('/CCT360-Project2/thunderstorm.jpg')";
+        return "url('thunderstorm.jpg')";
     } else {
         // Default
-        return "url('/CCT360-Project2/default.jpg')";
+        return "url('default.jpg')";
     }
 }
 
