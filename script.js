@@ -27,28 +27,28 @@ function getWeatherDescription(code) {
 function getBackgroundImage(code) {
     if (code === 0) {
         // Sunny
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/sunny.jpg')";
+        return "url('/CCT360-Project2/sunny.jpg')";
     } else if (code >= 1 && code <= 3) {
         // Cloudy
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/cloudy.jpg')";
+        return "url('/CCT360-Project2/cloudy.jpg')";
     } else if (code >= 45 && code <= 48) {
         // Foggy
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/foggy.jpg')";
+        return "url('/CCT360-Project2/foggy.jpg')";
     } else if (code >= 51 && code <= 55) {
         // Drizzle
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/drizzle.jpg')";
+        return "url('/CCT360-Project2/drizzle.jpg')";
     } else if (code >= 61 && code <= 65) {
         // Rainy
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/Rainy.jpg')";
+        return "url('/CCT360-Project2/Rainy.jpg')";
     } else if (code >= 71 && code <= 75) {
         // Snowy
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/snowy.jpg')";
+        return "url('/CCT360-Project2/snowy.jpg')";
     } else if (code >= 95 && code <= 99) {
         // Thunderstorm
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/thunderstorm.jpg')";
+        return "url('/CCT360-Project2/thunderstorm.jpg')";
     } else {
         // Default
-        return "url('/Users/doreen/Desktop/CCT360/CCT360 P2/default.jpg')";
+        return "url('/CCT360-Project2/default.jpg')";
     }
 }
 
