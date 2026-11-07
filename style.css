@@ -1,26 +1,161 @@
+:root {
+    color-scheme: light;
+    --ink: #202a27;
+    --muted: #64716b;
+    --paper: #f3f2eb;
+    --accent: #c45036;
+    --scene-image: url("default.jpg");
+}
+
+* { box-sizing: border-box; }
+
 body {
-    text-align: center;
-    margin-top: 100px;
-    height: 100vh;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button { font: inherit; }
+
+.page-shell { max-width: 1440px; margin: 0 auto; padding: 0 7.2%; }
+.topbar { height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(32 42 39 / 16%); }
+.wordmark { color: var(--ink); font-size: 13px; font-weight: 800; letter-spacing: 1.4px; text-decoration: none; }
+.wordmark span { color: var(--accent); }
+.location-line, .eyebrow, .detail-label { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; }
+.location-line { display: flex; align-items: center; gap: 9px; color: #48554e; }
+.location-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.refresh-button { display: inline-flex; align-items: center; gap: 7px; padding: 8px 0 8px 10px; border: 0; background: transparent; color: var(--ink); cursor: pointer; font-size: 12px; }
+.refresh-button span:first-child { font-size: 19px; line-height: 1; }
+.refresh-button:hover span:first-child { transform: rotate(45deg); }
+.refresh-button span:first-child { transition: transform 180ms ease; }
+
+.weather-scene {
+    position: relative;
+    min-height: 410px;
+    margin-top: 26px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 54px 7%;
+    background-image: linear-gradient(90deg, rgb(22 32 29 / 62%) 0%, rgb(22 32 29 / 25%) 56%, rgb(22 32 29 / 8%) 100%), var(--scene-image);
+    background-position: center 52%;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    transition: background-image 0.5s ease-in-out; /* animation while switch backgroud */
-    color: black;
+    color: #fff;
+    transition: background-image 400ms ease;
+}
+.weather-scene::after { position: absolute; inset: auto 0 0; height: 100px; background: linear-gradient(transparent, rgb(0 0 0 / 24%)); content: ""; pointer-events: none; }
+.scene-copy, .current-weather, .scene-caption { position: relative; z-index: 1; }
+.eyebrow { margin: 0 0 17px; color: var(--accent); }
+.weather-scene .eyebrow { color: #f0c1a8; }
+.scene-copy h1, .stylist-intro h2, .outlook-heading h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: 0; }
+.scene-copy h1 { font-size: clamp(42px, 5vw, 66px); line-height: .99; }
+.scene-note { margin: 18px 0 0; color: rgb(255 255 255 / 84%); font-size: 14px; }
+.current-weather { min-width: 210px; text-align: right; }
+.weather-symbol { height: 44px; font-size: 37px; line-height: 1; }
+.temperature-line { display: flex; align-items: flex-start; justify-content: flex-end; gap: 5px; }
+#temperature { font-size: 76px; font-weight: 500; letter-spacing: -2px; line-height: 1; }
+.unit-toggle { margin-top: 8px; padding: 4px; border: 0; border-bottom: 1px solid rgb(255 255 255 / 60%); background: transparent; color: white; cursor: pointer; font-size: 16px; }
+.condition { margin: 12px 0 5px; font-family: Georgia, "Times New Roman", serif; font-size: 24px; }
+.weather-time { margin: 0; color: rgb(255 255 255 / 78%); font-size: 12px; }
+.scene-caption { position: absolute; right: 7%; bottom: 20px; left: 7%; display: flex; align-items: center; gap: 12px; color: rgb(255 255 255 / 80%); font-size: 9px; letter-spacing: 1.2px; }
+.caption-rule { width: 34px; height: 1px; background: rgb(255 255 255 / 60%); }
+
+.day-details { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: center; gap: 24px; padding: 24px 2px 25px; border-bottom: 1px solid rgb(32 42 39 / 17%); }
+.detail-item { display: grid; gap: 7px; }
+.detail-label { color: var(--muted); font-size: 9px; }
+.detail-item strong { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 400; }
+.updated-label { margin: 0; color: var(--muted); font-size: 10px; text-align: right; }
+
+.stylist-section { display: grid; grid-template-columns: 1.05fr .8fr 1.15fr; align-items: center; min-height: 310px; padding: 40px 0; border-bottom: 1px solid rgb(32 42 39 / 17%); }
+.stylist-intro { padding-right: 20px; }
+.stylist-intro .eyebrow, .outlook-heading .eyebrow { margin-bottom: 12px; }
+.stylist-intro h2, .outlook-heading h2 { font-size: 36px; line-height: 1.06; }
+.stylist-context { max-width: 280px; margin: 14px 0 20px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.assistant-picker { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid rgb(32 42 39 / 18%); }
+.assistant-choice { min-width: 66px; padding: 8px 12px; border: 0; background: transparent; color: var(--ink); cursor: pointer; font-size: 11px; transition: background 160ms ease, color 160ms ease; }
+.assistant-choice.is-selected { background: var(--ink); color: #fff; }
+.assistant-choice:focus-visible, .unit-toggle:focus-visible, .refresh-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.assistant-portrait-wrap { position: relative; display: flex; width: min(100%, 180px); aspect-ratio: 3 / 4; justify-self: center; overflow: visible; align-self: end; background-image: var(--assistant-image, url("female%20assistant.png")); background-position: center; background-repeat: no-repeat; background-size: 100% 100%; }
+.character-art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: portrait-in 450ms ease both; }
+.wardrobe-overlay { overflow: visible; }
+.garment-layer { cursor: pointer; outline: none; pointer-events: visiblePainted; }
+.garment-layer path { stroke: #202a27; stroke-width: 8; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; transition: filter 140ms ease, stroke-width 140ms ease; }
+.garment-layer > path:first-of-type { fill: var(--garment-color); }
+.garment-layer:hover path, .garment-layer:focus path, .garment-layer.is-active path { filter: brightness(1.13) drop-shadow(0 0 5px rgb(255 255 255 / 90%)); stroke: #fff; stroke-width: 13; }
+.garment-layer:focus-visible path { stroke: var(--accent); stroke-width: 16; }
+.outfit-copy { padding-left: 28px; border-left: 1px solid rgb(32 42 39 / 17%); }
+.assistant-name { margin: 0 0 14px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: 1.1px; }
+.assistant-name span { display: block; margin-top: 5px; color: var(--muted); font-size: 8px; font-weight: 600; }
+.outfit-copy h3 { margin: 0 0 9px; font-family: Georgia, "Times New Roman", serif; font-size: 23px; font-weight: 400; }
+.outfit-copy > p:not(.assistant-name) { max-width: 350px; margin: 0; color: #505d56; font-size: 12px; line-height: 1.65; }
+.wardrobe-heading { margin-top: 19px; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: 1.4px; }
+.wardrobe-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+.wardrobe-item { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid rgb(32 42 39 / 20%); background: transparent; color: #455149; cursor: pointer; font-size: 9px; transition: background 140ms ease, color 140ms ease, border-color 140ms ease; }
+.wardrobe-item:hover, .wardrobe-item.is-active { border-color: var(--ink); background: var(--ink); color: white; }
+.wardrobe-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wardrobe-index { color: var(--accent); font-size: 8px; font-weight: 700; }
+.wardrobe-item.is-active .wardrobe-index, .wardrobe-item:hover .wardrobe-index { color: #f0b49c; }
+.piece-detail { display: grid; gap: 5px; margin-top: 12px; padding: 10px 12px; border-left: 2px solid var(--accent); background: rgb(255 255 255 / 48%); }
+.piece-detail-label { color: var(--muted); font-size: 7px; font-weight: 700; letter-spacing: 1.2px; }
+.piece-detail strong { font-family: Georgia, "Times New Roman", serif; font-size: 15px; font-weight: 400; }
+.piece-detail > span:last-child { color: var(--muted); font-size: 10px; line-height: 1.5; }
+
+.outlook-section { padding: 31px 0 35px; }
+.outlook-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px; }
+.outlook-heading .eyebrow { font-size: 9px; }
+.outlook-heading h2 { font-size: 27px; }
+.outlook-heading > p { margin: 0 0 3px; color: var(--muted); font-size: 10px; }
+.hourly-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgb(32 42 39 / 18%); border-bottom: 1px solid rgb(32 42 39 / 18%); }
+.hour-item { display: grid; justify-items: center; gap: 8px; padding: 15px 5px; border-right: 1px solid rgb(32 42 39 / 12%); }
+.hour-item:last-child { border-right: 0; }
+.hour-time { color: var(--muted); font-size: 10px; }
+.hour-symbol { font-size: 19px; }
+.hour-temp { font-family: Georgia, "Times New Roman", serif; font-size: 17px; }
+.hourly-loading { grid-column: 1 / -1; margin: 0; padding: 19px; color: var(--muted); font-size: 12px; }
+.footer { display: flex; justify-content: space-between; padding: 17px 0 24px; color: var(--muted); font-size: 9px; }
+.footer span:first-child { color: var(--ink); font-weight: 700; letter-spacing: .5px; }
+.error-message { margin: 0 0 24px; padding: 12px; background: #f8e5de; color: #762f20; font-size: 12px; }
+.is-loading .weather-symbol { animation: pulse 1.1s ease-in-out infinite alternate; }
+
+@keyframes portrait-in { from { opacity: .4; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { from { opacity: .4; } to { opacity: 1; } }
+
+@media (max-width: 760px) {
+    .page-shell { padding: 0 5%; }
+    .topbar { height: 64px; }
+    .location-line { font-size: 8px; letter-spacing: 1px; }
+    .refresh-label { display: none; }
+    .weather-scene { min-height: 380px; margin-top: 16px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 26px; padding: 32px 7% 56px; background-position: center; }
+    .scene-copy h1 { font-size: 48px; }
+    .current-weather { min-width: unset; text-align: left; }
+    .weather-symbol { display: inline-block; height: auto; margin-right: 7px; font-size: 26px; vertical-align: 7px; }
+    .temperature-line { display: inline-flex; justify-content: flex-start; }
+    #temperature { font-size: 58px; }
+    .unit-toggle { margin-top: 4px; }
+    .condition { margin-top: 3px; font-size: 20px; }
+    .day-details { grid-template-columns: repeat(2, 1fr); gap: 19px 12px; padding: 20px 2px; }
+    .updated-label { grid-column: 1 / -1; text-align: left; }
+    .stylist-section { grid-template-columns: 1fr 1fr; min-height: 0; padding: 32px 0; }
+    .stylist-intro { grid-column: 1; grid-row: 1; padding-right: 8px; }
+    .stylist-intro h2 { font-size: 31px; }
+    .stylist-context { font-size: 11px; }
+    .assistant-portrait-wrap { grid-column: 2; grid-row: 1 / span 2; width: min(100%, 170px); }
+    .outfit-copy { grid-column: 1 / -1; grid-row: 2; margin-top: 22px; padding: 20px 0 0; border-top: 1px solid rgb(32 42 39 / 17%); border-left: 0; }
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
+@media (max-width: 420px) {
+    .wordmark { font-size: 11px; letter-spacing: 1px; }
+    .location-line { gap: 6px; font-size: 7px; }
+    .weather-scene { min-height: 360px; }
+    .hourly-list { grid-template-columns: repeat(3, 1fr); }
+    .hour-item:nth-child(3) { border-right: 0; }
+    .hour-item:nth-child(-n + 3) { border-bottom: 1px solid rgb(32 42 39 / 12%); }
+    .footer { flex-wrap: wrap; gap: 9px 16px; }
 }
 
-#temperature {
-    font-size: 4rem;
-    font-weight: bold;
-}
-
-#weather-condition {
-    font-size: 2rem;
-    font-weight: bold;
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

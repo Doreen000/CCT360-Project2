@@ -1,16 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Weather Daily</title>
-        <link rel="stylesheet" href="style.css">
+        <meta name="theme-color" content="#dce7df" />
+        <title>Weather, Worn | Mississauga</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
     </head>
-    <body>
-        <h1>Mississauga Weather</h1>
-        <div id="temperature">loading...</div>
-        <div id="weather-condition">loading...</div>
-    </body>
-    <script src="script.js"></script>
+    <body class="is-loading">
+        <div class="page-shell">
+            <header class="topbar">
+                <a class="wordmark" href="#top" aria-label="Weather, Worn home">WEATHER, WORN<span>.</span></a>
+                <div class="location-line"><span class="location-dot" aria-hidden="true"></span>MISSISSAUGA, ONTARIO</div>
+                <button class="refresh-button" id="refresh-weather" type="button" aria-label="Refresh weather">
+                    <span aria-hidden="true">↻</span><span class="refresh-label">Refresh</span>
+                </button>
+            </header>
+
+            <main id="top">
+                <section class="weather-scene" aria-labelledby="page-title">
+                    <div class="scene-copy">
+                        <p class="eyebrow" id="local-date">YOUR LOCAL WEATHER</p>
+                        <h1 id="page-title">Dress for<br />the day.</h1>
+                        <p class="scene-note">A little forecast, a better outfit.</p>
+                    </div>
+                    <div class="current-weather" aria-live="polite" aria-busy="true">
+                        <div class="weather-symbol" id="weather-symbol" aria-hidden="true">◌</div>
+                        <div class="temperature-line">
+                            <span id="temperature">--</span>
+                            <button class="unit-toggle" id="unit-toggle" type="button" aria-label="Switch temperature unit">°C</button>
+                        </div>
+                        <p class="condition" id="weather-condition">Finding your forecast...</p>
+                        <p class="weather-time" id="weather-time">Mississauga right now</p>
+                    </div>
+                    <div class="scene-caption"><span>43.5890° N</span><span class="caption-rule"></span><span>79.6441° W</span></div>
+                </section>
+
+                <section class="day-details" aria-label="Current weather details">
+                    <div class="detail-item"><span class="detail-label">FEELS LIKE</span><strong id="feels-like">--</strong></div>
+                    <div class="detail-item"><span class="detail-label">WIND</span><strong id="wind-speed">--</strong></div>
+                    <div class="detail-item"><span class="detail-label">HUMIDITY</span><strong id="humidity">--</strong></div>
+                    <div class="detail-item"><span class="detail-label">PRECIPITATION</span><strong id="precipitation">--</strong></div>
+                    <p class="updated-label" id="updated-label">Connecting to live weather</p>
+                </section>
+
+                <section class="stylist-section" aria-labelledby="stylist-title">
+                    <div class="stylist-intro">
+                        <p class="eyebrow">A WEATHER-LED OUTFIT</p>
+                        <h2 id="stylist-title">Your day,<br />well dressed.</h2>
+                        <p class="stylist-context" id="stylist-context">A forecast-aware suggestion, made for stepping out in Mississauga.</p>
+                        <div class="assistant-picker" role="group" aria-label="Choose your style assistant">
+                            <button class="assistant-choice is-selected" type="button" data-assistant="maya" aria-pressed="true">Maya</button>
+                            <button class="assistant-choice" type="button" data-assistant="leo" aria-pressed="false">Leo</button>
+                        </div>
+                    </div>
+                    <div class="assistant-portrait-wrap" id="assistant-stage" role="img" aria-label="Maya, your outfit assistant">
+                        <svg class="character-art" id="character-art" viewBox="0 0 1080 1440" role="group" aria-label="Maya's weather-matched outfit">
+                            <g class="wardrobe-overlay" id="wardrobe-overlay"></g>
+                        </svg>
+                    </div>
+                    <div class="outfit-copy" aria-live="polite">
+                        <p class="assistant-name" id="assistant-name">MAYA <span>YOUR STYLE ASSISTANT</span></p>
+                        <h3 id="outfit-title">Checking the weather...</h3>
+                        <p id="outfit-advice">Your outfit suggestion will be ready as soon as the forecast comes in.</p>
+                        <div class="wardrobe-heading">OUTFIT DETAILS</div>
+                        <div class="wardrobe-list" id="wardrobe-list" aria-label="Pieces in this outfit"></div>
+                        <div class="piece-detail" id="piece-detail" aria-live="polite">
+                            <span class="piece-detail-label">SELECT A PIECE</span>
+                            <strong id="piece-title">Outfit details</strong>
+                            <span id="piece-description">The suggested layers will appear here.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="outlook-section" aria-labelledby="outlook-title">
+                    <div class="outlook-heading"><div><p class="eyebrow">THE NEXT FEW HOURS</p><h2 id="outlook-title">On the way</h2></div><p>Local hourly forecast</p></div>
+                    <div class="hourly-list" id="hourly-list" aria-live="polite"><p class="hourly-loading">Loading the hourly outlook...</p></div>
+                </section>
+            </main>
+            <footer class="footer"><span>Weather, Worn</span><span>Live conditions for Mississauga</span><span>Data by Open-Meteo</span></footer>
+            <p class="error-message" id="error-message" role="status" hidden>Weather is temporarily unavailable. Check your connection and try again.</p>
+        </div>
     </body>
 </html>
