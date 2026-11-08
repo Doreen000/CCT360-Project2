@@ -28,6 +28,19 @@ const garments = {
 };
 const outfitState = { weather: null, assistant: "maya", unit: "celsius" };
 
+const rainySound = new Audio("sounds/rainy.wav");
+const drizzleSound = new Audio("sounds/drizzle.wav");
+const snowySound = new Audio("sounds/snowy.wav");
+const sunnySound = new Audio("sounds/sunnyBirds.wav");
+const thunderstormSound = new Audio("sounds/thunderstorm.wav");
+const cloudySound = new Audio("sounds/wind.wav");
+
+if (type.name === "Partly cloudy") {
+    cloudySound.play().catch((error) => {
+        console.warn("Cloudy sound could not be played", error);
+    });
+}
+
 function getWeatherType(code) {
     return weatherTypes.find((type) => type.test(code)) || { name: "Mixed conditions", symbol: "◌", image: "default.jpg" };
 }
