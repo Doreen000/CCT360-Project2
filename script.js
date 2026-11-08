@@ -35,11 +35,6 @@ const sunnySound = new Audio("sounds/sunnyBirds.wav");
 const thunderstormSound = new Audio("sounds/thunderstorm.wav");
 const cloudySound = new Audio("sounds/wind.wav");
 
-if (type.name === "Partly cloudy") {
-    cloudySound.play().catch((error) => {
-        console.warn("Cloudy sound could not be played", error);
-    });
-}
 
 function getWeatherType(code) {
     return weatherTypes.find((type) => type.test(code)) || { name: "Mixed conditions", symbol: "◌", image: "default.jpg" };
@@ -162,6 +157,13 @@ function renderWeather() {
     document.body.classList.remove("is-loading");
     renderHourly(weather);
 }
+
+   if (type.name === "Partly cloudy") {
+            cloudySound.play().catch((error) => {
+                console.warn("Cloudy sound could not be played", error);
+            });
+        }
+
 
 function renderHourly(current) {
     const hourly = outfitState.weatherResponse.hourly;
