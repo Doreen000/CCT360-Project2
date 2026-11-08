@@ -158,6 +158,12 @@ function renderWeather() {
     renderHourly(weather);
 }
 
+   if (type.name === "Partly cloudy") {
+            cloudySound.play().catch((error) => {
+                console.warn("Cloudy sound could not be played", error);
+            });
+        }
+    
 
 function renderHourly(current) {
     const hourly = outfitState.weatherResponse.hourly;
