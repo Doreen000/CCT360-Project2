@@ -132,7 +132,7 @@ function renderWeather() {
 
     const type = getWeatherType(weather.weather_code);
 
-    if (type.name !== lastSoundWeatherType) {
+/*   if (type.name !== lastSoundWeatherType) {
         lastSoundWeatherType = type.name;
         if (type.name ==="Drizzle") {
             drizzleSound.currentTime = 0;
@@ -180,6 +180,7 @@ function renderWeather() {
                 console.warn("Cloudy sound could not be played", error);
             });
     }
+*/
     
     const assistant = assistants[outfitState.assistant];
     const outfit = outfitFor(weather);
