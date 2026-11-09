@@ -211,6 +211,8 @@ function renderWeather() {
     renderHourly(weather);
 }
 
+
+/*
 function playWeatherSound() {
     const weather = outfitState.weather;
     if (!weather) return;
@@ -243,9 +245,10 @@ function playWeatherSound() {
     sound.play().catch((error) => {
         console.warn("Weather sound could not be played", error);
     });
-}
+} 
 
 document.querySelector("#play-weather").addEventListener("click", playWeatherSound);
+*/
 
 function renderHourly(current) {
     const hourly = outfitState.weatherResponse.hourly;
