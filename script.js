@@ -30,11 +30,11 @@ const outfitState = { weather: null, assistant: "maya", unit: "celsius" };
 
 let lastSoundWeatherType = null;
 
-const rainySound = new Audio("rainy.wav");
-const drizzleSound = new Audio("drizzle.wav");
+const rainySound = new Audio("rain.mp3");
+const drizzleSound = new Audio("drizzle.mp3");
 const snowySound = new Audio("snowy.wav");
 const sunnySound = new Audio("birds.mp3");
-const thunderstormSound = new Audio("thunderstorm.wav");
+const thunderstormSound = new Audio("thunderstorm.mp3");
 const cloudySound = new Audio("cloudy.mp3");
 
 
