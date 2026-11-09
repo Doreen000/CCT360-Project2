@@ -35,7 +35,7 @@ const drizzleSound = new Audio("drizzle.wav");
 const snowySound = new Audio("snowy.wav");
 const sunnySound = new Audio("sunnyBirds.wav");
 const thunderstormSound = new Audio("thunderstorm.wav");
-const cloudySound = new Audio("wind.wav");
+const cloudySound = new Audio("cloudy.mp3");
 
 
 function getWeatherType(code) {
