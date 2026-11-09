@@ -32,7 +32,7 @@ let lastSoundWeatherType = null;
 
 const rainySound = new Audio("rain.mp3");
 const drizzleSound = new Audio("drizzle.mp3");
-const snowySound = new Audio("snowy.wav");
+const snowySound = new Audio("snowy.mp3");
 const sunnySound = new Audio("birds.mp3");
 const thunderstormSound = new Audio("thunderstorm.mp3");
 const cloudySound = new Audio("cloudy.mp3");
