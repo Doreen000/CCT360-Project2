@@ -131,57 +131,6 @@ function renderWeather() {
     if (!weather) return;
 
     const type = getWeatherType(weather.weather_code);
-
-/*   if (type.name !== lastSoundWeatherType) {
-        lastSoundWeatherType = type.name;
-        if (type.name ==="Drizzle") {
-            drizzleSound.currentTime = 0;
-            drizzleSound.play().catch((error) => {
-                console.warn("Drizzle sound could not be played", error);
-            });
-    }
-    if (type.name !== lastSoundWeatherType) {
-        lastSoundWeatherType = type.name;
-        if (type.name ==="Rainy") {
-            rainySound.currentTime = 0;
-            rainySound.play().catch((error) => {
-                console.warn("Rainy sound could not be played", error);
-            });
-    }
-    if (type.name !== lastSoundWeatherType) {
-        lastSoundWeatherType = type.name;
-        if (type.name ==="Snowy") {
-            snowySound.currentTime = 0;
-            snowySound.play().catch((error) => {
-                console.warn("Snowy sound could not be played", error);
-            });
-    }
-    if (type.name !== lastSoundWeatherType) {
-        lastSoundWeatherType = type.name;
-        if (type.name ==="Clear sky") {
-            sunnySound.currentTime = 0;
-            sunnySound.play().catch((error) => {
-                console.warn("Clear sky sound could not be played", error);
-            });
-    }
-    if (type.name !== lastSoundWeatherType) {
-        lastSoundWeatherType = type.name;
-        if (type.name ==="Thunderstorms") {
-            thunderstormSound.currentTime = 0;
-            thunderstormSound.play().catch((error) => {
-                console.warn("Thunderstorms sound could not be played", error);
-            });
-    }
-    if (type.name !== lastSoundWeatherType) {
-        lastSoundWeatherType = type.name;
-        if (type.name ==="Partly cloudy") {
-            cloudySound.currentTime = 0;
-            cloudySound.play().catch((error) => {
-                console.warn("Cloudy sound could not be played", error);
-            });
-    }
-*/
-    
     const assistant = assistants[outfitState.assistant];
     const outfit = outfitFor(weather);
     const temperature = formatTemperature(weather.temperature_2m);
@@ -211,44 +160,6 @@ function renderWeather() {
     renderHourly(weather);
 }
 
-
-/*
-function playWeatherSound() {
-    const weather = outfitState.weather;
-    if (!weather) return;
-
-    const code = weather.weather_code;
-    let sound;
-
-    if ([95, 96, 99].includes(code)) {
-        sound = thunderstormSound;
-    } else if ([71, 73, 75, 77, 85, 86].includes(code)) {
-        sound = snowySound;
-    } else if ([51, 53, 55, 56, 57].includes(code)) {
-        sound = drizzleSound;
-    } else if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code) || weather.precipitation > 0) {
-        sound = rainySound;
-    } else if (code === 0) {
-        sound = sunnySound;
-    } else if (code <= 3) {
-        sound = cloudySound;
-    }
-
-    if (!sound) return;
-
-    [rainySound, drizzleSound, snowySound, sunnySound, thunderstormSound, cloudySound]
-        .forEach((audio) => {
-            audio.pause();
-            audio.currentTime = 0;
-        });
-
-    sound.play().catch((error) => {
-        console.warn("Weather sound could not be played", error);
-    });
-} 
-
-document.querySelector("#play-weather").addEventListener("click", playWeatherSound);
-*/
 
 function renderHourly(current) {
     const hourly = outfitState.weatherResponse.hourly;
