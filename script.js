@@ -188,6 +188,7 @@ function playWeatherSound() {
             audio.currentTime = 0; 
         });
 
+    sound.loop = true;
     sound.play().catch((error) => {
         console.warn("Weather sound could not be played", error);
     });
